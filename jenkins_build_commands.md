@@ -31,7 +31,7 @@ sudo docker build -t devops_pipeline_demo .
 
 CONTAINER=devops_pipeline_demo
  
-RUNNING=$(sudo docker inspect $CONTAINER | jq '.[].State.Running' 2 >/dev/null)
+RUNNING=$(sudo docker inspect $CONTAINER | jq '.[].State.Running' 2> /dev/null)
 
 if [ $? -eq 1 ]; then
   echo "'$CONTAINER' does not exist."
