@@ -31,9 +31,9 @@ sudo docker build -t devops_pipeline_demo .
 
 CONTAINER=devops_pipeline_demo
  
-RUNNING=$(sudo docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+RUNNING=$(sudo docker inspect $CONTAINER |jq '{{ .State.Running }}')
 
-if [ $? -eq 1 ]; then
+if [ $? -eq null ]; then
   echo "'$CONTAINER' does not exist."
 else
   sudo docker rm -f $CONTAINER
